@@ -233,13 +233,13 @@ const MainHeader = ({
 				>
 					<div>
 						<div
-							className='flex flex-col  md:flex-row items-center gap-0 md:gap-3'
+							className='flex text-center gap-1  text-xs sm:text-sm md:text-base flex-col  lg:flex-row items-center gap-0 lg:gap-3'
 							style={{ color: banner.data.textColor }}
 						>
-							{banner && banner.data.text ? <h4>{banner.data.text}</h4> : ''}
+							{banner && banner.data.text ? <h4  >{banner.data.text}</h4> : ''}
 							{banner.data.bannerUrlText ? (
 								!banner.data.isAddToCartButton ? (
-									<div>
+									<div >
 										<Link
 											href={
 												Number(id) ? '/products/' + id : banner.data.bannerUrl
