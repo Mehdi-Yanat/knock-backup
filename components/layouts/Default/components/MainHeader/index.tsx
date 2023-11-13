@@ -37,6 +37,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import CheckoutPopup from '@components/shared/common/CheckoutPopup/CheckoutPopup';
+import { getOneProductByHandle } from 'server/controllers/products';
 
 const linkClasses = ({
 	isActive,
@@ -201,11 +202,17 @@ const MainHeader = ({
 				const { data } = await axios.get(
 					`/api/products/product?handle=${id === 'knock' ? 'knock-plugin' : id}`
 				);
-				if (!data.product) {
+				const dtk = await axios.get(
+					`/api/products/product?handle=drums-that-knock-limited-edition-2023`
+				);
+				if (!data.product || !dtk.data.product) {
 					throw new Error(data.response.data.message);
 				}
 				addProductsToCheckoutAndCart.mutate({
-					products: [{ ...data.product, quantity: 1 }]
+					products: [
+						{ ...data.product, quantity: 1 },
+						{ ...dtk.data.product, quantity: 1 }
+					]
 				});
 			} catch (error) {
 				if (error.response) {
