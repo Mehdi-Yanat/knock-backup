@@ -5,10 +5,12 @@ import AddItemOnHeroSectionButton from '@components/shared/core/AddItemOnHeroSec
 
 const VideosSection = ({
 	knockPlugin,
-	data
+	data,
+	dtkLe
 }: {
 	knockPlugin: IKnockPluginPageProps['knockPlugin'];
 	data: any;
+	dtkLe: any;
 }) => {
 	return (
 		<section className='bg-primary-1 text-primary-2 section-p-x-v1 section-pb-v1'>
@@ -37,6 +39,7 @@ const VideosSection = ({
 				]}
 				buttonElem={
 					<AddItemOnHeroSectionButton
+						dtkLe={dtkLe}
 						product={knockPlugin}
 						buttonProps={{ children: data ? data.button : false }}
 					/>

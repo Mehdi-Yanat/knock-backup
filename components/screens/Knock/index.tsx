@@ -15,8 +15,13 @@ import {
 	AvailableOnIOSSection
 } from './sections';
 
-
-const KnockScreen = ({ knockPlugin }: IKnockPluginPageProps) => {
+const KnockScreen = ({
+	knockPlugin,
+	dtkLe
+}: {
+	knockPlugin: any;
+	dtkLe: any;
+}) => {
 	const pageTitle = `KNOCK Plugin | ${defaultSiteName}`;
 	const pageDescription =
 		'This is the last plugin you will ever need to make your drums KNOCK and punch through your mix. This plugin was meticulously crafted by platinum producer &amp; award winning sound designer, DECAP. It is inspired by the signature sound of his popular drum kit series DRUMS THAT KNOCK, which has helped shaped the sonics o';
@@ -28,15 +33,17 @@ const KnockScreen = ({ knockPlugin }: IKnockPluginPageProps) => {
 	return (
 		<>
 			<CustomNextSeo pageTitle={pageTitle} pageDescription={pageDescription} />
-			<HeroSection knockPlugin={knockPlugin} />
+			<HeroSection dtkLe={dtkLe} knockPlugin={knockPlugin} />
 			<DescriptionSection data={data ? data.secondSection : ''} />
 			<ShapesYourDrumsSection data={data ? data.thirdSection : ''} />
 			<EasyToUseSection
 				data={data ? data.forthSection : ''}
+				dtkLe={dtkLe}
 				knockPlugin={knockPlugin}
 			/>
 			<DrumsThatKnockSection
 				data={data ? data.fifthSection : ''}
+				dtkLe={dtkLe}
 				knockPlugin={knockPlugin}
 			/>
 			<AvailableOnIOSSection data={data ? data.iosSection : ''} />
@@ -55,6 +62,7 @@ const KnockScreen = ({ knockPlugin }: IKnockPluginPageProps) => {
 
 			<VideosSection
 				data={data ? data.eightSection : ''}
+				dtkLe={dtkLe}
 				knockPlugin={knockPlugin}
 			/>
 		</>

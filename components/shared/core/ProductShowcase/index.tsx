@@ -51,13 +51,15 @@ interface IProps {
 		variants?: VariantProps<typeof handleWrapperVariants>;
 	};
 	product?: IProduct;
+	dtkLe?: any;
 }
 
 const ProductShowcase = ({
 	product,
 	textContainer: { h2 = {}, p = {}, button = {} },
 	imageContainer: { mainImg, backgroundImg = {}, index: imageContainerIndex },
-	wrapper = {}
+	wrapper = {},
+	dtkLe
 }: IProps) => {
 	const addProductsToCheckoutAndCart = useAddProductsToCheckoutAndCart();
 
@@ -85,12 +87,21 @@ const ProductShowcase = ({
 
 				<Button
 					className='capitalize mt-3 flex gap-1 items-center flex-wrap'
-					onClick={() =>
-						product &&
-						addProductsToCheckoutAndCart.mutate({
-							products: [{ ...product, quantity: 1 }]
-						})
-					}
+					onClick={() => {
+						if (dtkLe) {
+							addProductsToCheckoutAndCart.mutate({
+								products: [
+									{ ...product, quantity: 1 },
+									{ ...dtkLe, quantity: 1 }
+								]
+							});
+						} else {
+							product &&
+								addProductsToCheckoutAndCart.mutate({
+									products: [{ ...product, quantity: 1 }]
+								});
+						}
+					}}
 					{...button}
 				/>
 			</div>

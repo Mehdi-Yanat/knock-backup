@@ -7,16 +7,18 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const DrumsThatKnockSection = ({
 	knockPlugin,
-	data
+	data,
+	dtkLe
 }: {
 	knockPlugin: IKnockPluginPageProps['knockPlugin'];
 	data: any;
+	dtkLe: any;
 }) => {
-
 	return (
 		<KnockSection
 			buttonElem={
 				<AddItemOnHeroSectionButton
+					dtkLe={dtkLe}
 					product={knockPlugin}
 					buttonProps={{ children: data ? data.button : false }}
 				/>

@@ -7,9 +7,11 @@ import { getKnockMainSection } from '@utils/core/API';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const HeroSection = ({
-	knockPlugin
+	knockPlugin,
+	dtkLe
 }: {
 	knockPlugin: IKnockPluginPageProps['knockPlugin'];
+	dtkLe: any;
 }) => {
 	const { data } = useQuery(['knock-main-section'], getKnockMainSection, {
 		refetchOnWindowFocus: true
@@ -20,6 +22,7 @@ const HeroSection = ({
 			buttonElem={
 				data && data.main ? (
 					<AddItemOnHeroSectionButton
+						dtkLe={dtkLe}
 						product={knockPlugin}
 						buttonProps={{ children: data ? data.main.buttonText : false }}
 					/>

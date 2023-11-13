@@ -10,7 +10,7 @@ export interface IKnockPluginPageProps {
 	knockPlugin: IProduct; // ShopifyBuy.Product;
 }
 
-const KnockPluginPage: NextPage<IKnockPluginPageProps> = (props) => {
+const KnockPluginPage: NextPage<any> = (props) => {
 	return <KnockScreen {...props} />;
 };
 
@@ -19,6 +19,12 @@ export default KnockPluginPage;
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 	const knockPlugin = JSON.parse(
 		JSON.stringify(await getOneProductByHandle('knock-plugin'))
+	);
+
+	const dtkLe = JSON.parse(
+		JSON.stringify(
+			await getOneProductByHandle('drums-that-knock-limited-edition-2023')
+		)
 	);
 
 	res.setHeader(
@@ -34,6 +40,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 	return {
 		props: {
 			knockPlugin,
+			dtkLe,
 			dehydratedState: dehydrate(queryClient)
 		}
 	};

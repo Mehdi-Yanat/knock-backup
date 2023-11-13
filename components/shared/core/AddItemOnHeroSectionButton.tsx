@@ -9,19 +9,31 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 const AddItemOnHeroSectionButton = ({
 	product,
 	buttonProps: _buttonProps = {},
-	hideButton
+	hideButton,
+	dtkLe
 }: {
 	product: IProduct;
 	buttonProps?: Parameters<typeof Button>[0];
 	hideButton?: boolean;
+	dtkLe?: any;
 }) => {
 	const addProductsToCheckoutAndCart = useAddProductsToCheckoutAndCart();
 
 	const buttonProps = {
-		onClick: () =>
-			addProductsToCheckoutAndCart.mutate({
-				products: [{ ...product, quantity: 1 }]
-			}),
+		onClick: () => {
+			if (dtkLe) {
+				addProductsToCheckoutAndCart.mutate({
+					products: [
+						{ ...dtkLe, quantity: 1 },
+						{ ...product, quantity: 1 }
+					]
+				});
+			} else {
+				addProductsToCheckoutAndCart.mutate({
+					products: [{ ...product, quantity: 1 }]
+				});
+			}
+		},
 		children: 'Buy it now',
 		className: 'capitalize text-h6',
 		..._buttonProps

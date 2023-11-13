@@ -4,16 +4,17 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const EasyToUseSection = ({
 	knockPlugin,
+	dtkLe,
 	data
 }: {
 	knockPlugin: IKnockPluginPageProps['knockPlugin'];
 	data: any;
+	dtkLe: any;
 }) => {
-
-
 	return (
 		<section className='bg-primary-1 text-primary-2 section-p-v1'>
 			<ProductShowcase
+				dtkLe={dtkLe}
 				product={knockPlugin}
 				textContainer={{
 					h2: {
