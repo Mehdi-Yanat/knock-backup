@@ -22,7 +22,7 @@ interface ExtraProductCardDetails {
 }
 
 const handleImageVariants = cva(
-	['aspect-square overflow-hidden max-w-full', 'transition-all'],
+	['overflow-hidden max-w-full', 'transition-all'],
 	{
 		variants: {
 			onHover: {
