@@ -123,7 +123,7 @@ const MainHeader = ({
 		{
 			enabled: !!userCheckoutIdAndKeyFromCookie,
 			cacheTime: 300000,
-			refetchInterval: 3 * 1000,
+			refetchInterval: 20 * 1000,
 			onSuccess: ({ checkout }) => {
 				if (checkout.lineItems.length !== 0)
 					customerGlobalActions.cart.set(customerDispatch, {
