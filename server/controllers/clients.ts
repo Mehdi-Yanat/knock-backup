@@ -824,12 +824,12 @@ const supportForm = async (
 ) => {
 	const input = z
 		.object({
-			email: z.string().email(),
+			email: z.string().email().trim(),
 			orderNumber: z.string().optional(),
 			subject: z.string(),
 			message: z.string(),
 			fullName: z.string().min(2),
-			countryCode: z.string().min(3)
+			countryCode: z.string().min(3 , {message:'Please select your country from the drop down menu'})
 		})
 		.parse(req.body);
 
